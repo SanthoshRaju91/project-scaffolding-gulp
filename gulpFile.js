@@ -20,10 +20,11 @@ var preprocessor = require('gulp-preprocess') // preprocessor only for HTML.
 var del = require('del');
 var rename = require('gulp-rename');
 var csslint = require('gulp-csslint');
+var bower = require('gulp-bower-files');
+
 //configuring environment
 var environment = process.env.ENV || 'development';
 
-var isProduction = (environment == 'production') ? true : false;
 /*
 * Configuring the CSS and JS scripts path for both Production and development
 * For production - it will be in the build folder.
@@ -36,7 +37,7 @@ var BUILD_PATH = {
   imgsPath: "./build/imgs/",
   templatePath: "./build/templates/",
   htmlPath: './build/',
-  vendor: ''
+  vendorPath: './build/vendor/'
 };
 
 var PUBLIC_PATH = {
@@ -46,7 +47,8 @@ var PUBLIC_PATH = {
   jsPath: "./public/js/**/*.js",
   imgsPath: "./public/imgs/**/*.*",
   templatePath: "./public/templates/*.html",
-  htmlPath: "./public/*.html"
+  htmlPath: "./public/*.html",
+  vendorPath: './public/vendor/**/*.*'
 };
 
 /**
@@ -135,6 +137,17 @@ gulp.task('template', function() {
   }
 });
 
+
+/**
+*GULP: vendor - to download bower dependencies from bower.json file and move it to build folder
+*/
+gulp.task('vendor', function() {
+  if(environment == 'production') {
+    return gulp.src(PUBLIC_PATH.vendorPath)
+     .pipe(gulp.dest(BUILD_PATH.vendorPath));
+  }
+});
+
 /**
 WATCH: watch gulp task only for development environment with livereload
 */
@@ -151,7 +164,7 @@ gulp.task('watch', function() {
 /**
 GULP: prod:build - production build task
 */
-gulp.task('prod:build', ['styles', 'scripts', 'html', 'template', 'images']);
+gulp.task('prod:build', ['styles', 'scripts', 'html', 'template', 'images', 'vendor']);
 
 /**
 GULP: open in default browser,  checks for default browser on the host machine

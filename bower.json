@@ -1,0 +1,27 @@
+{
+  "name": "angular-components-framework",
+  "description": "Angular Components Framework",
+  "main": "index.js",
+  "authors": [
+    "Santhosh Raju"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Angular",
+    "Frameworks",
+    "common",
+    "components"
+  ],
+  "homepage": "https://github.com/SanthoshRaju91/angular-components-framework",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "d3": "^3.5.17"
+  }
+}

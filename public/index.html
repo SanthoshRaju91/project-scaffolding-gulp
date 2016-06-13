@@ -1,0 +1,28 @@
+<html>
+  <head>
+      <title>Index Page</title>
+      <link rel="stylesheet" href="vendor/c3/c3.css">
+      <link rel="stylesheet" href="vendor/Materialize/dist/css/materialize.css">
+      <!-- @if NODE_ENV='development'-->
+      <link rel="stylesheet" href="css/style.css">
+      <!--@endif-->
+      <!-- @if NODE_ENV='production' -->
+      <link rel="styleshee" href="css/style.min.css">
+      <!--@endif-->
+      <script src="vendor/d3/d3.min.js"></script>
+      <script src="vendor/c3/c3.js"></script>
+      <script src="vendor/angular/angular.js"></script>
+      <!-- @if NODE_ENV='production'-->
+      <script src="js/app.min.js"></script>
+      <!-- @endif-->
+      <!-- @if NODE_ENV='development'-->
+      <script src="js/app.js"></script>
+      <!-- @endif-->
+  </head>
+  <body ng-app="app" ng-init="message = 'Angular and Materialize meets Gulp'">
+      <h1>{{message}}</h1>
+      <!-- @if NODE_ENV='development'-->
+      <script src="http://localhost:35729/livereload.js"></script>
+      <!-- @endif -->
+  </body>
+</html>
